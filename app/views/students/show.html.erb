@@ -7,4 +7,27 @@
 <p><strong>Alernate Number:</strong><%= @student.alternate_contact_number %></p>
 <p><strong>Age:</strong><%= @student.age %></p>
 
+<h2>Admission in Courses:</h2>
+<table border="1">
+	<thead>
+	  <th>ID</th>
+	  <th>Course Name</th>
+	</thead>
+
+	<tbody>
+    <% if @student.courses.any? %>
+    <% @student.courses.each do |course| %>
+      <tr>
+        <td><%= course.id %></td>
+        <td><%= course.name %></td>
+      </tr>
+    <% end %>
+    <% else %>
+    <tr>
+      <td colspan="2">Student has not enrolled in any course yet!!</td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
 <%= link_to "Back to List", students_path %>
