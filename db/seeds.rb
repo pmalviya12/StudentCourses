@@ -19,9 +19,11 @@ Student.all each do |s|
 end
 
 5.times do |i|
-  Post.create!(title: "Post #{i}")
+  Blog.create!(title: "Blog #{i}")
 end
 
 Post.all.each do |post|
   post.comments.create(title: "Comment for Post + #{post.id}")
-end
+
+
+Blog.all.each
