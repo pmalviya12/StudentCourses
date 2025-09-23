@@ -1,0 +1,46 @@
+<%= form_with model: student, data: { turbo: false } do |form| %>
+<div>
+ 	<%=form.label :first_name %>
+ 	<%= form.text_field :first_name %>
+ </div>
+
+ <div>
+ 	<%=form.label :last_name %>
+ 	<%= form.text_field :last_name %>
+ </div>
+
+ <div>
+ 	<%=form.label :age %>
+ 	<%= form.text_field :age %>
+ </div>
+
+ <div>
+ 	<%=form.label :state %>
+ 	<%= form.text_field :state %>
+ </div>
+
+ <div>
+ 	<%=form.label :local_address %>
+ 	<%= form.text_field :local_address %>
+ </div>
+
+ <div>
+ 	<%=form.label :permanent_adress %>
+ 	<%= form.text_field :permanent_adress %>
+ </div>
+
+ <div>
+ 	<%=form.label :permanent_contact_number %>
+ 	<%= form.text_field :permanent_contact_number %>
+ </div>
+
+ <div>
+ 	<%=form.label :alternate_contact_number %>
+ 	<%= form.text_field :alternate_contact_number %>
+ </div>
+
+ <div>
+ 	<%= form.submit %>
+ </div>
+</div>
+<% end %>

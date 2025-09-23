@@ -1,0 +1,10 @@
+<h1>Student Details</h1>
+<p><strong>First Name:</strong><%= @student.first_name %></p>
+<p><strong>Last Name:</strong><%= @student.last_name %></p>
+<p><strong>Local Address:</strong><%="#{@student.local_address}, #{@student.state}" %></p>
+<p><strong>Permanent Address:</strong><%="#{@student.permanent_adress}, #{@student.state}" %></p>
+<p><strong>Contact Number:</strong><%= @student.permanent_contact_number %></p>
+<p><strong>Alernate Number:</strong><%= @student.alternate_contact_number %></p>
+<p><strong>Age:</strong><%= @student.age %></p>
+
+<%= link_to "Back to List", students_path %>
