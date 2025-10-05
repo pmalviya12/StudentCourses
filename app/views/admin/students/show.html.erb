@@ -13,11 +13,8 @@
       <% else %>
         <p><strong>Date of Birth:</strong><%= "#{@student.first_name} has not entered the date of birth"%></p>
       <% end %>
-      <%= link_to "Enroll", (@student.courses.count < 3 ? new_student_enrollment_path(@student) : "#"),
-            class: "btn btn-primary #{'disabled' if @student.courses.count >= 3}" %>
-      <%= link_to "Back", students_path, class: "btn btn-primary" %>
-      <%= link_to "Edit", edit_student_path(@student), class: "btn btn-secondary" %>
-
+      <%= link_to "Back", admin_students_path , class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_admin_student_path(@student) , class: "btn btn-secondary" %>
     </div>
   </div>
 </div>
@@ -47,4 +44,4 @@
 </table>
 </div>
 
-<%= link_to "Back to List", students_path %>
+<%= link_to "Back to List", admin_students_path %>

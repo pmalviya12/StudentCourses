@@ -1,0 +1,11 @@
+<div class = "col-lg-8">
+  <h1>  New Student</h1>
+  <% if @student.errors.any? %>
+    <% @student.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render partial: 'form', locals: {student: @student} %>
+<%= link_to 'Cancel & Back', admin_students_path %>

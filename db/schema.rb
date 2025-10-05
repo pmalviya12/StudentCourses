@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_30_174757) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_05_102407) do
   create_table "blogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "content"
@@ -46,6 +46,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_30_174757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "terms_of_services", default: false
+  end
+
+  create_table "enrollments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -101,14 +110,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_30_174757) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "email_address", null: false
-    t.string "password_digest", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "students"
   add_foreign_key "student_projects", "projects"
   add_foreign_key "student_projects", "students"
   add_foreign_key "sub_demos", "demos"

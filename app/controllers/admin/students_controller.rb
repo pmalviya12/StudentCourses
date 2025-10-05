@@ -1,2 +1,63 @@
 class Admin::StudentsController < ApplicationController
+
+  before_action :set_student , only: %i[show edit update destroy]
+  skip_before_action :display_message, only: [:index]
+  helper_method :formatted_date
+
+  def index
+    @students = Student.all.paginate(page: params[:page], per_page: 5)
+  end
+
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+
+    if @student.save
+      redirect_to admin_student_path(@student), notice: "Student has been created successfully."
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @student.update(student_params)
+      redirect_to @student, notice: "Student is update successfully"
+    else
+      #explicit rendering
+      render :edit
+    end
+  end
+
+  def show
+    #here we are having implicit redering
+  end
+
+  def destroy
+    @student.destroy
+    redirect_to admin_students_path
+  end
+
+  private 
+
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :email, :local_address, :permanent_adress, :permanent_contact_number, :alternate_contact_number, :state, :age)
+  end
+
+  def record_not_found
+    render plain: "Student Not Found", status: :not_found
+  end
+
+  def formatted_date(date)
+    date.strftime('%A, %b %d, %Y') if date.present?
+  end
 end

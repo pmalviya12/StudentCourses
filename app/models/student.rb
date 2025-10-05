@@ -6,8 +6,9 @@ class Student < ApplicationRecord
  
 
   #associations
+  has_many :enrollments
+  has_many :courses, through: :enrollments
   has_many :blogs, dependent: :destroy
-  has_and_belongs_to_many :courses, before_add: :check_course_limit
   has_many :student_projects, dependent: :destroy
   has_many :projects, through: :student_projects
   

@@ -17,13 +17,12 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    render :new
-    redirect_to students_path
-    # if @student.save
-    #   redirect_to @student, notice: "Student has been created successfully."
-    # else
-    #   render :new
-    # end
+
+    if @student.save
+      redirect_to @student, notice: "Student has been created successfully."
+    else
+      render :new
+    end
   end
 
   def edit
@@ -33,11 +32,13 @@ class StudentsController < ApplicationController
     if @student.update(student_params)
       redirect_to @student, notice: "Student is update successfully"
     else
+      #explicit rendering
       render :edit
     end
   end
 
   def show
+    #here we are having implicit redering
   end
 
   def destroy

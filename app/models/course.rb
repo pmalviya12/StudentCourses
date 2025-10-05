@@ -1,8 +1,10 @@
 class Course < ApplicationRecord
+  self.per_page = 5
   include Validatable
 
   #associations
-  has_and_belongs_to_many :students
+  has_many :enrollments
+  has_many :students, through: :enrollments
   
   #callbacks
   before_validation :titelize_course_name

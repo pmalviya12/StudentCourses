@@ -9,3 +9,6 @@ window.Stimulus   = application
 export { application }
 import "bootstrap"
 import "@popperjs/core"
+import Rails from "@rails/ujs"
+Rails.start()
+

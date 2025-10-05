@@ -61,3 +61,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+#pagination 
+gem 'will_paginate', '~> 4.0'
+gem "devise", "~> 4.9"
