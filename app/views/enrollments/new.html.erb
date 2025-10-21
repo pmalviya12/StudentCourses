@@ -1,0 +1,10 @@
+<h1>Enroll in Course</h1>
+
+<%= form_with model: [@student, @enrollment], local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :course_id, "Select Course" %>
+    <%= f.collection_select :course_id, @available_courses, :id, :name %>
+  </div>
+
+  <%= f.submit "Enroll", class: "btn btn-primary" %>
+<% end %>

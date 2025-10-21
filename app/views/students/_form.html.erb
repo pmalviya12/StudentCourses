@@ -1,46 +1,41 @@
 <%= form_with model: student, data: { turbo: false } do |form| %>
-<div>
+<div class = "form-group">
  	<%=form.label :first_name %>
- 	<%= form.text_field :first_name %>
+ 	<%= form.text_field :first_name, class: "form-control form-control-lg" %>
  </div>
 
- <div>
+ <div class = "form-group">
  	<%=form.label :last_name %>
- 	<%= form.text_field :last_name %>
+ 	<%= form.text_field :last_name, class: "form-control form-control-lg" %>
  </div>
 
- <div>
- 	<%=form.label :age %>
- 	<%= form.text_field :age %>
- </div>
-
- <div>
+ <div class = "form-group">
  	<%=form.label :state %>
- 	<%= form.text_field :state %>
+ 	<%= form.text_field :state, class: "form-control form-control-lg" %>
  </div>
 
- <div>
+ <div class = "form-group">
  	<%=form.label :local_address %>
- 	<%= form.text_field :local_address %>
+ 	<%= form.text_field :local_address, class: "form-control form-control-lg" %>
  </div>
 
- <div>
+ <div class = "form-group">
  	<%=form.label :permanent_adress %>
- 	<%= form.text_field :permanent_adress %>
+ 	<%= form.text_field :permanent_adress, class: "form-control form-control-lg" %>
  </div>
 
- <div>
+ <div class = "form-group">
  	<%=form.label :permanent_contact_number %>
- 	<%= form.text_field :permanent_contact_number %>
+ 	<%= form.text_field :permanent_contact_number, class: "form-control form-control-lg" %>
  </div>
 
- <div>
+ <div class = "form-group">
  	<%=form.label :alternate_contact_number %>
- 	<%= form.text_field :alternate_contact_number %>
+ 	<%= form.text_field :alternate_contact_number, class: "form-control form-control-lg" %>
  </div>
 
- <div>
- 	<%= form.submit %>
+ <div class = "form-group">
+ 	<%= form.submit class: "btn btn-primary"%>
  </div>
 </div>
 <% end %>

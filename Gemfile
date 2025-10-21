@@ -61,3 +61,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+#pagination 
+gem 'will_paginate', '~> 4.0'
+gem "devise", "~> 4.9"
+gem 'paperclip'
+gem "letter_opener"
+gem 'rspec-rails'
+gem "sidekiq", "~> 8.0"
+gem 'sidekiq-ui'

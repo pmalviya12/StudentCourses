@@ -1,14 +1,30 @@
-<h1>Student Details</h1>
-<p><strong>First Name:</strong><%= @student.first_name %></p>
-<p><strong>Last Name:</strong><%= @student.last_name %></p>
-<p><strong>Local Address:</strong><%="#{@student.local_address}, #{@student.state}" %></p>
-<p><strong>Permanent Address:</strong><%="#{@student.permanent_adress}, #{@student.state}" %></p>
-<p><strong>Contact Number:</strong><%= @student.permanent_contact_number %></p>
-<p><strong>Alernate Number:</strong><%= @student.alternate_contact_number %></p>
-<p><strong>Age:</strong><%= @student.age %></p>
+<div class = "col-lg-10">
+  <div class = "card rounded-0 shadow mt-5">
+    <div class = "card-body">
+      <h1>Student Details</h1>
+      <p><strong>Name: </strong><%= @student.full_name %>
+      <p><strong>Age:</strong><%= @student.age %></p>
+      <p><strong>Local Address:</strong><%="#{@student.local_address}, #{@student.state}" %></p>
+      <p><strong>Permanent Address:</strong><%="#{@student.permanent_adress}, #{@student.state}" %></p>
+      <p><strong>Contact Number:</strong><%= @student.permanent_contact_number %></p>
+      <p><strong>Alernate Number:</strong><%= @student.alternate_contact_number %></p>
+      <% if @student.date_of_birth.present? %>
+        <p><strong>Date of Birth:</strong><%= formatted_date(@student.date_of_birth) %></p>
+      <% else %>
+        <p><strong>Date of Birth:</strong><%= "#{@student.first_name} has not entered the date of birth"%></p>
+      <% end %>
+      <%= link_to "Enroll", (@student.courses.count < 3 ? new_student_enrollment_path(@student) : "#"),
+            class: "btn btn-primary #{'disabled' if @student.courses.count >= 3}" %>
+      <%= link_to "Back", students_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_student_path(@student), class: "btn btn-secondary" %>
 
-<h2>Admission in Courses:</h2>
-<table border="1">
+    </div>
+  </div>
+</div>
+
+<div class = "col-lg-10">
+<h4>Courses</h4>
+<table border="2">
 	<thead>
 	  <th>ID</th>
 	  <th>Course Name</th>
@@ -29,5 +45,6 @@
   <% end %>
 </tbody>
 </table>
+</div>
 
 <%= link_to "Back to List", students_path %>
