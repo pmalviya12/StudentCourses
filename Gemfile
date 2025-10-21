@@ -69,4 +69,3 @@ gem 'paperclip'
 gem "letter_opener"
 gem 'rspec-rails'
 gem "sidekiq", "~> 8.0"
-gem 'sidekiq-ui'
