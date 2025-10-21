@@ -19,6 +19,8 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
+      CrudNotificationMailer.create_notification(@student)
+      deliver_now
       redirect_to @student, notice: "Student has been created successfully."
     else
       render :new

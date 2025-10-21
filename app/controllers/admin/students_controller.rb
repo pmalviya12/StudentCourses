@@ -16,6 +16,7 @@ class Admin::StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
+      CrudNotificationMailer.create_notification(@student).deliver_now
       redirect_to admin_student_path(@student), notice: "Student has been created successfully."
     else
       render :new
@@ -27,19 +28,19 @@ class Admin::StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
+       CrudNotificationMailer.update_notification(@student).deliver_now
       redirect_to @student, notice: "Student is update successfully"
     else
-      #explicit rendering
       render :edit
     end
   end
 
   def show
-    #here we are having implicit redering
   end
 
   def destroy
     @student.destroy
+    CrudNotificationMailer.delete_notification(@student).deliver_now
     redirect_to admin_students_path
   end
 
@@ -50,7 +51,7 @@ class Admin::StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :email, :local_address, :permanent_adress, :permanent_contact_number, :alternate_contact_number, :state, :age)
+    params.require(:student).permit(:first_name, :last_name, :date_of_birth, :email, :local_address, :permanent_adress, :permanent_contact_number, :alternate_contact_number, :state, :age)
   end
 
   def record_not_found

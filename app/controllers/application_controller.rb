@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :display_message
   after_action :after_display_message
 
-
   private
   def display_message
     puts "===================================="

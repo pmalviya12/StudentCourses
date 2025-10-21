@@ -24,4 +24,21 @@
   <div>
     <%= form.submit %>
   </div>
+
+  <div>
+    <%= form.checkbox :pragati %>
+    <%= form.label :pragati, "Pragati" %>
+    <div>
+    <%= form.radio_button :falvor, "choco_chip" %>
+    <%= form.label :falvor_choco_chip, "Choco Chip" %>
+    </div>
+    <div>
+    <%= form.radio_button :falvor, "vaniila" %>
+    <%= form.label :falvor_vanilla, "Vanilla" %>
+  </div>
+  <div>
+    <%= form.radio_button :falvor, "hazelnut" %>
+    <%= form.label :flavor_hazel_nut, "hazelnut" %>
+  </div>
+  </div>
 <% end %>
