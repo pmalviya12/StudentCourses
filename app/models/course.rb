@@ -10,6 +10,9 @@ class Course < ApplicationRecord
   before_validation :titelize_course_name
   after_validation :log_errors
 
+  enum :status, { active: 0, inactive: 1 }
+
+
   private
   def titelize_course_name
     self.name = name.downcase.titleize if name.present?

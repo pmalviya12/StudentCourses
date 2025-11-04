@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_05_112927) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_01_193740) do
   create_table "blogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "content"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_05_112927) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", default: 0
+    t.integer "status"
   end
 
   create_table "courses_students", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
