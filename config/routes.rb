@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :enrollments
   end
 
+  resources :institute, except: [:edit, :update]
   root "welcome#index"
 end

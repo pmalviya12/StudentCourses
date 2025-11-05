@@ -13,14 +13,14 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @student.build_address
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = Student.new(student_params1)
 
     if @student.save
-      CrudNotificationMailer.create_notification(@student)
-      deliver_now
+      CrudNotificationMailer.create_notification(@student).deliver_now
       redirect_to @student, notice: "Student has been created successfully."
     else
       render :new
@@ -54,8 +54,8 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
-  def student_params
-    params.require(:student).permit(:first_name, :last_name, :local_address, :permanent_adress, :permanent_contact_number, :alternate_contact_number, :state, :age)
+  def student_params1
+    params.require(:student).permit(:first_name, :email, :last_name, :permanent_contact_number, :alternate_contact_number, :state, :age)
   end
 
   def record_not_found

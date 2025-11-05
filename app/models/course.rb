@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   #associations
   has_many :enrollments
   has_many :students, through: :enrollments
+  belongs_to :institute
   
   #callbacks
   before_validation :titelize_course_name

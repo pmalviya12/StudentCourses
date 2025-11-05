@@ -10,18 +10,13 @@
  </div>
 
  <div class = "form-group">
+ 	<%=form.label :email %>
+ 	<%= form.text_field :email, class: "form-control form-control-lg" %>
+ </div>
+
+ <div class = "form-group">
  	<%=form.label :state %>
  	<%= form.text_field :state, class: "form-control form-control-lg" %>
- </div>
-
- <div class = "form-group">
- 	<%=form.label :local_address %>
- 	<%= form.text_field :local_address, class: "form-control form-control-lg" %>
- </div>
-
- <div class = "form-group">
- 	<%=form.label :permanent_adress %>
- 	<%= form.text_field :permanent_adress, class: "form-control form-control-lg" %>
  </div>
 
  <div class = "form-group">
@@ -33,6 +28,11 @@
  	<%=form.label :alternate_contact_number %>
  	<%= form.text_field :alternate_contact_number, class: "form-control form-control-lg" %>
  </div>
+
+ <h3>Address</h3>
+  <%= form.fields_for :address do |address_fields| %>
+    <%= render 'shared/address', f: address_fields %>
+  <% end %>
 
  <div class = "form-group">
  	<%= form.submit class: "btn btn-primary"%>

@@ -4,8 +4,12 @@
       <h1>Student Details</h1>
       <p><strong>Name: </strong><%= @student.full_name %>
       <p><strong>Age:</strong><%= @student.age %></p>
-      <p><strong>Local Address:</strong><%="#{@student.local_address}, #{@student.state}" %></p>
-      <p><strong>Permanent Address:</strong><%="#{@student.permanent_adress}, #{@student.state}" %></p>
+      <h3>Address</h3>
+        <% if @student.address.present? %>
+          <p><strong>Full Address:</strong> <%= @student.address.full_address %></p>
+        <% else %>
+        <p>No address available.</p>
+      <% end %>
       <p><strong>Contact Number:</strong><%= @student.permanent_contact_number %></p>
       <p><strong>Alernate Number:</strong><%= @student.alternate_contact_number %></p>
       <% if @student.date_of_birth.present? %>

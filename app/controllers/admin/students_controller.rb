@@ -51,7 +51,7 @@ class Admin::StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :date_of_birth, :email, :local_address, :permanent_adress, :permanent_contact_number, :alternate_contact_number, :state, :age)
+    params.require(:student).permit(:first_name, :last_name, :date_of_birth,:email, :permanent_contact_number, :alternate_contact_number, :state, :age)
   end
 
   def record_not_found
